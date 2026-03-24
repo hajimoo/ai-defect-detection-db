@@ -69,14 +69,24 @@ docker start mysql-container
 ```bash
 docker exec -i mysql-container mysql -u root -p < sql/schema.sql
 ```
-### 3. (任意) サンプルデータの投入
+### 3. インデックスの適用
+```bash
+docker exec -i mysql-container mysql -u root -p < sql/indexes.sql
+```
+### 4. (任意) サンプルデータの投入
 ```bash
 docker exec -i mysql-container mysql -u root -p < sql/sample_data.sql
 ```
+### 5. (任意) ビューの作成
+```bash
+docker exec -i mysql-container mysql -u root -p < sql/views.sql
+```
+
 ### 注意
 mysql-container は使用しているコンテナ名に合わせてください
 rootパスワードの入力が必要です
-必要に応じてデータベースを事前に作成してください
+必要に応じて対象データベースを事前に作成してください
+実運用ではパスワード管理、アクセス制御、バックアップ設計が必要です
 
 ---
 
@@ -100,7 +110,15 @@ rootパスワードの入力が必要です
 
 AIレビュー、類似ケース分析、モデルバージョン管理などへの拡張を考慮
 
+---
 
+### 用例
+
+誤検知分析
+低信頼ケースの抽出
+モデル改善対象の特定
+再学習データ候補の蓄積
+API運用状況のモニタリング
 ---
 
 ## 関連プロジェクト
