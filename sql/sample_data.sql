@@ -1,31 +1,78 @@
-INSERT INTO users (email, password_hash, role)
-VALUES
-('user1@test.com', 'hashed_pw_1', 'user'),
-('admin@test.com', 'hashed_pw_admin', 'admin');
+USE ai_defect_detection;
 
-INSERT INTO uploaded_images (user_id, original_filename, stored_path)
+INSERT INTO users (email, password_hash, role, is_active)
 VALUES
-(1, 'sample1.jpg', '/data/sample1.jpg'),
-(1, 'sample2.jpg', '/data/sample2.jpg');
+('user1@test.com', 'hashed_pw_1', 'user', 1),
+('admin@test.com', 'hashed_pw_admin', 'admin', 1);
 
-INSERT INTO predictions (image_id, user_id, label, confidence, status)
+INSERT INTO uploaded_images (
+    user_id,
+    original_filename,
+    stored_path,
+    mime_type,
+    file_size,
+    file_hash,
+    width,
+    height
+)
 VALUES
-(1, 1, 'normal', 0.95, 'success'),
-(2, 1, 'defect', 0.52, 'pending');
+(1, 'sample1.jpg', '/data/sample1.jpg', 'image/jpeg', 245678, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 1024, 768),
+(1, 'sample2.jpg', '/data/sample2.jpg', 'image/jpeg', 198234, 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', 800, 600);
 
-INSERT INTO review_queue (prediction_id, review_status)
+INSERT INTO predictions (
+    image_id,
+    user_id,
+    model_version,
+    label,
+    confidence,
+    status,
+    is_low_confidence,
+    failure_reason,
+    similar_case_group
+)
 VALUES
-(2, 'pending');
+(1, 1, 'v1.0.0', 'normal', 0.9500, 'success', 0, NULL, 'group_a'),
+(2, 1, 'v1.0.0', 'defect', 0.5200, 'review_needed', 1, NULL, 'group_b');
 
-INSERT INTO dataset_candidates (prediction_id, is_dataset_candidate)
+INSERT INTO review_queue (
+    prediction_id,
+    review_status,
+    human_label,
+    ai_review_summary,
+    ai_review_recommendation,
+    reviewed_at
+)
 VALUES
-(2, 1);
+(2, 'pending', NULL, '信頼度が低いため追加レビューが必要', '人手確認を推奨', NULL);
 
-INSERT INTO request_logs (user_id, prediction_id, request_id, status_code)
+INSERT INTO dataset_candidates (
+    prediction_id,
+    is_dataset_candidate,
+    candidate_reason,
+    candidate_status
+)
 VALUES
-(1, 1, 'REQ-001', 200),
-(1, 2, 'REQ-002', 200);
+(2, 1, '低信頼ケースのため再学習候補に登録', 'pending');
 
-INSERT INTO error_logs (request_log_id, error_message)
+INSERT INTO request_logs (
+    user_id,
+    prediction_id,
+    request_id,
+    endpoint,
+    method,
+    client_ip,
+    status_code,
+    latency_ms
+)
 VALUES
-(2, 'Low confidence detected');
+(1, 1, 'REQ-001', '/predict', 'POST', '127.0.0.1', 200, 312),
+(1, 2, 'REQ-002', '/predict', 'POST', '127.0.0.1', 200, 487);
+
+INSERT INTO error_logs (
+    request_log_id,
+    error_code,
+    error_message,
+    error_detail
+)
+VALUES
+(2, 'LOW_CONF_WARN', 'Low confidence detected', 'Prediction confidence was below the review threshold.');
