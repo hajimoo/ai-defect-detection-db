@@ -37,7 +37,7 @@
 ER図は以下を参照してください：
 
 * `docs/erd.md`
-* `images/erd.png`
+
 
 ---
 
