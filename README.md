@@ -113,7 +113,7 @@ AIレビュー、類似ケース分析、モデルバージョン管理などへ
 ---
 
 ### 用例
-
+---
 誤検知分析
 低信頼ケースの抽出
 モデル改善対象の特定
@@ -121,7 +121,7 @@ AIレビュー、類似ケース分析、モデルバージョン管理などへ
 API運用状況のモニタリング
 ---
 
-## 関連プロジェクト
+### 関連プロジェクト
 
 * [Defect Detection API (FastAPI)](https://github.com/hajimoo/defect-detection-api/tree/main)  
 * [CNNモデル推論システム](https://github.com/hajimoo/cnn-manufacturing-defect)  
