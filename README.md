@@ -1,0 +1,1 @@
+# ai-defect-detection-db
