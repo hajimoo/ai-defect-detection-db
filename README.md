@@ -98,5 +98,5 @@ AIレビュー、類似ケース分析、モデルバージョン管理などへ
 
 * Defect Detection API (FastAPI)
 * CNNモデル推論システム
-
+* Defect Detection frontend (Reatct)
 
