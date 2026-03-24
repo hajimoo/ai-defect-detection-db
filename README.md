@@ -96,7 +96,7 @@ AIレビュー、類似ケース分析、モデルバージョン管理などへ
 
 ## 関連プロジェクト
 
-* Defect Detection API (FastAPI)(https://github.com/hajimoo/defect-detection-api/tree/main)  
-* CNNモデル推論システム(https://github.com/hajimoo/cnn-manufacturing-defect)  
-* Defect Detection frontend (Reatct)(https://github.com/hajimoo/defect-detection-frontend) 
+* [Defect Detection API (FastAPI)](https://github.com/hajimoo/defect-detection-api/tree/main)  
+* [CNNモデル推論システム](https://github.com/hajimoo/cnn-manufacturing-defect)  
+* [Defect Detection frontend(Reatct)](https://github.com/hajimoo/defect-detection-frontend) 
 
