@@ -59,6 +59,21 @@ ER図は以下を参照してください：
 | views.sql       | 分析用ビュー      |
 
 ---
+##  Database Setup
+
+### 1. MySQLコンテナの起動
+```bash
+docker start mysql-container
+2. スキーマの適用
+docker exec -i mysql-container mysql -u root -p < sql/schema.sql
+3. (任意) サンプルデータの投入
+docker exec -i mysql-container mysql -u root -p < sql/sample_data.sql
+ 注意
+mysql-container は使用しているコンテナ名に合わせてください
+rootパスワードの入力が必要です
+必要に応じてデータベースを事前に作成してください
+
+---
 
 ## 特徴
 
