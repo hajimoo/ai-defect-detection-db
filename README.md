@@ -42,7 +42,7 @@
 - モデル性能分析は **prediction 単位** で行う必要がある
 - レビュー対象や再学習候補は **特定の推論結果に対して判断される**
 
-そのため uploaded_images ではなく predictions を中心としたデータモデルとしています。
+そのため `uploaded_images` ではなく `predictions` を中心としたデータモデルとしています。
 
 ---
 
@@ -150,39 +150,42 @@ docs/erd.md
 
 ## Database Setup
 
-**Windows (PowerShell):**
-powershell
+### Windows (PowerShell)
+
+```powershell
 # 1. MySQLコンテナ起動
 docker start mysql-container
 
 # 2. スキーマ適用
-Get-Content sql\schema.sql | docker exec -i mysql-container mysql -u root -p비밀번호
+Get-Content sql\schema.sql | docker exec -i mysql-container mysql -u root -p password
 
 # 3. インデックス適用
-Get-Content sql\indexes.sql | docker exec -i mysql-container mysql -u root -p비밀번호
+Get-Content sql\indexes.sql | docker exec -i mysql-container mysql -u root -p password
 
 # 4. サンプルデータ投入（任意）
-Get-Content sql\sample_data.sql | docker exec -i mysql-container mysql -u root -p비밀번호
+Get-Content sql\sample_data.sql | docker exec -i mysql-container mysql -u root -p password
 
 # 5. ビュー作成（任意）
-Get-Content sql\views.sql | docker exec -i mysql-container mysql -u root -p비밀번호
+Get-Content sql\views.sql | docker exec -i mysql-container mysql -u root -p password
+```
 
-**macOS/Linux:**
-bash
+### macOS / Linux
+
+```bash
 # 1. MySQLコンテナ起動
 docker start mysql-container
 
 # 2. スキーマ適用
-docker exec -i mysql-container mysql -u root -p비밀번호 < sql/schema.sql
+docker exec -i mysql-container mysql -u root -p password < sql/schema.sql
 
 # 3. インデックス適用
-docker exec -i mysql-container mysql -u root -p비밀번호 < sql/indexes.sql
+docker exec -i mysql-container mysql -u root -p password < sql/indexes.sql
 
 # 4. サンプルデータ投入（任意）
-docker exec -i mysql-container mysql -u root -p비밀번호 < sql/sample_data.sql
+docker exec -i mysql-container mysql -u root -p password < sql/sample_data.sql
 
 # 5. ビュー作成（任意）
-docker exec -i mysql-container mysql -u root -p비밀번호 < sql/views.sql
+docker exec -i mysql-container mysql -u root -p password < sql/views.sql
 ```
 
 ---
@@ -190,13 +193,17 @@ docker exec -i mysql-container mysql -u root -p비밀번호 < sql/views.sql
 ## Future Improvements
 
 ### Review Queue Concurrency Control
+
 レビューの同時処理防止のため以下を追加予定
+
 - `assigned_reviewer_id`
 - `locked_at`
 - `review_status = 'in_progress'`
 
 ### Composite Index Optimization
+
 クエリパターンに基づく複合インデックス
+
 ```sql
 (user_id, created_at)
 (status, created_at)
@@ -204,12 +211,11 @@ docker exec -i mysql-container mysql -u root -p비밀번호 < sql/views.sql
 ```
 
 ### Model Performance Analytics
+
 - モデルバージョン比較
 - 誤検知分析
 - 信頼度分布分析
 - データセット品質分析
-
----
 
 ## Related Projects
 
