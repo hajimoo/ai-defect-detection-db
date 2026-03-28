@@ -209,8 +209,8 @@ request_logs : error_logs = 1:N
 
 ## 5.2 品質改善ループ
 
-低信頼予測を `review_queue` に登録し、  
-レビュー結果を基に `dataset_candidates` を生成することで
+低信頼予測を review_queue に登録し、  
+レビュー結果を基に dataset_candidates を生成することで
 
 **モデル改善サイクル** を実現します。
 
@@ -218,7 +218,7 @@ request_logs : error_logs = 1:N
 
 ## 5.3 運用監視
 
-`request_logs` と `error_logs` を分離することで
+`request_logs` と error_logs を分離することで
 
 - API応答時間分析
 - エラー発生傾向分析
