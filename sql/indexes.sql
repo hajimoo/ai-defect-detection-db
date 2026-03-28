@@ -47,3 +47,15 @@ CREATE INDEX idx_dataset_candidates_flag
 
 CREATE INDEX idx_dataset_candidates_status
     ON dataset_candidates(candidate_status);
+
+CREATE INDEX idx_predictions_user_created
+    ON predictions(user_id, created_at);
+
+CREATE INDEX idx_predictions_status_created
+    ON predictions(status, created_at);
+
+CREATE INDEX idx_review_queue_status_created
+    ON review_queue(review_status, created_at);
+
+CREATE INDEX idx_dataset_candidates_status_created
+    ON dataset_candidates(candidate_status, created_at);
