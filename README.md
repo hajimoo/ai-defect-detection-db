@@ -150,21 +150,39 @@ docs/erd.md
 
 ## Database Setup
 
-```bash
+**Windows (PowerShell):**
+powershell
 # 1. MySQLコンテナ起動
 docker start mysql-container
 
 # 2. スキーマ適用
-docker exec -i mysql-container mysql -u root -p < sql/schema.sql
+Get-Content sql\schema.sql | docker exec -i mysql-container mysql -u root -p비밀번호
 
 # 3. インデックス適用
-docker exec -i mysql-container mysql -u root -p < sql/indexes.sql
+Get-Content sql\indexes.sql | docker exec -i mysql-container mysql -u root -p비밀번호
 
 # 4. サンプルデータ投入（任意）
-docker exec -i mysql-container mysql -u root -p < sql/sample_data.sql
+Get-Content sql\sample_data.sql | docker exec -i mysql-container mysql -u root -p비밀번호
 
 # 5. ビュー作成（任意）
-docker exec -i mysql-container mysql -u root -p < sql/views.sql
+Get-Content sql\views.sql | docker exec -i mysql-container mysql -u root -p비밀번호
+
+**macOS/Linux:**
+bash
+# 1. MySQLコンテナ起動
+docker start mysql-container
+
+# 2. スキーマ適用
+docker exec -i mysql-container mysql -u root -p비밀번호 < sql/schema.sql
+
+# 3. インデックス適用
+docker exec -i mysql-container mysql -u root -p비밀번호 < sql/indexes.sql
+
+# 4. サンプルデータ投入（任意）
+docker exec -i mysql-container mysql -u root -p비밀번호 < sql/sample_data.sql
+
+# 5. ビュー作成（任意）
+docker exec -i mysql-container mysql -u root -p비밀번호 < sql/views.sql
 ```
 
 ---
