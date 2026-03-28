@@ -43,7 +43,7 @@ INSERT INTO review_queue (
     reviewed_at
 )
 VALUES
-(2, 'pending', NULL, '信頼度が低いため追加レビューが必要', '人手確認を推奨', NULL);
+(2, 'pending', NULL, 'Low confidence score requires additional review', 'Manual verification recommended', NULL);
 
 INSERT INTO dataset_candidates (
     prediction_id,
@@ -52,7 +52,7 @@ INSERT INTO dataset_candidates (
     candidate_status
 )
 VALUES
-(2, 1, '低信頼ケースのため再学習候補に登録', 'pending');
+(2, 1, 'Low confidence case registered as retraining candidate', 'pending');
 
 INSERT INTO request_logs (
     user_id,
