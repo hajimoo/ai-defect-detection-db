@@ -42,7 +42,7 @@
 - モデル性能分析は **prediction 単位** で行う必要がある
 - レビュー対象や再学習候補は **特定の推論結果に対して判断される**
 
-そのため `uploaded_images` ではなく `predictions` を中心としたデータモデルとしています。
+そのため uploaded_images ではなく predictions を中心としたデータモデルとしています。
 
 ---
 
