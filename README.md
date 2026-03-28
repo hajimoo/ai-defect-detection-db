@@ -183,6 +183,7 @@ git clone https://github.com/hajimoo/ai-defect-detection-db.git
 
 # 0-1. フォルダに移動 
 cd ai-defect-detection-db
+
 # 1. MySQLコンテナ起動
 docker start mysql-container
 
