@@ -218,7 +218,7 @@ request_logs : error_logs = 1:N
 
 ## 5.3 運用監視
 
-`request_logs` と error_logs を分離することで
+request_logs と error_logs を分離することで
 
 - API応答時間分析
 - エラー発生傾向分析
