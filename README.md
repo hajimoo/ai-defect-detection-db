@@ -34,7 +34,7 @@
 
 ## Key Design Decisions
 
-### 1. `predictions` を中心テーブルとした理由
+### 1. predictions を中心テーブルとした理由
 
 本システムでは **画像ではなく推論結果（prediction）を中心** として設計しています。
 
