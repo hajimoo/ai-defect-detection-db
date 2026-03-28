@@ -88,13 +88,13 @@
 
 ### 4. `status` カラムの必要性
 
-`predictions` テーブルには推論処理状態を管理する `status` カラムを設けています。
+predictions テーブルには推論処理状態を管理する status カラムを設けています。
 
 ```
 pending → success / failed / review_needed
 ```
 
-`confidence` や `label` が NULL かどうかだけでは処理状態を正確に判断できないため、**明示的な状態管理**を行っています。
+confidence や label が NULL かどうかだけでは処理状態を正確に判断できないため、**明示的な状態管理**を行っています。
 
 - 推論処理が非同期で実行される可能性への対応
 - 推論失敗の明確な記録
