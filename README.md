@@ -195,9 +195,9 @@ docker exec -i mysql-container mysql -u root -p < sql/views.sql
 
 ## Related Projects
 
-- Defect Detection API (FastAPI)
-- CNN モデル推論システム
-- Defect Detection Frontend (React)
+- Defect Detection API (FastAPI)(https://github.com/hajimoo/defect-detection-api/tree/main)  
+- CNN モデル推論システム(https://github.com/hajimoo/cnn-manufacturing-defect)  
+- Defect Detection Frontend (React)(https://github.com/hajimoo/defect-detection-frontend) 
 
 ---
 
