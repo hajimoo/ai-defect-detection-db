@@ -153,6 +153,12 @@ docs/erd.md
 ### Windows (PowerShell)
 
 ```powershell
+# 0. リポジトリのクローン 
+git clone https://github.com/hajimoo/ai-defect-detection-db.git
+
+# 0-1. フォルダに移動 
+cd ai-defect-detection-db
+
 # 1. MySQLコンテナ起動
 docker start mysql-container
 
@@ -172,6 +178,11 @@ Get-Content sql\views.sql | docker exec -i mysql-container mysql -u root -p pass
 ### macOS / Linux
 
 ```bash
+# 0. リポジトリのクローン 
+git clone https://github.com/hajimoo/ai-defect-detection-db.git
+
+# 0-1. フォルダに移動 
+cd ai-defect-detection-db
 # 1. MySQLコンテナ起動
 docker start mysql-container
 
