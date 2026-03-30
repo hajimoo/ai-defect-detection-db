@@ -140,15 +140,27 @@ docs/erd.md
 ## SQL Files
 
 | File | Description |
-|------|-------------|
-| `schema.sql` | テーブル定義 |
-| `indexes.sql` | インデックス定義 |
-| `sample_data.sql` | サンプルデータ |
-| `views.sql` | 分析用ビュー |
+|---|---|
+| 01_schema.sql | テーブル定義 |
+| 02_indexes.sql | インデックス定義 |
+| 03_views.sql | 分析用ビュー |
+| 04_sample_data.sql | サンプルデータ |
 
 ---
 
 ## Database Setup
+
+本リポジトリの SQL ファイルは `defect-detection-api` リポジトリの `docker-compose.yml` によって自動的に適用されます。
+```bash
+docker-compose up --build
+```
+
+手動で適用する場合は以下の順序で実行してください。
+
+1. `01_schema.sql`
+2. `02_indexes.sql`
+3. `03_views.sql`
+4. `04_sample_data.sql`（任意）
 
 ### Windows (PowerShell)
 
@@ -163,16 +175,16 @@ cd ai-defect-detection-db
 docker start mysql-container
 
 # 2. スキーマ適用
-Get-Content sql\schema.sql | docker exec -i mysql-container mysql -u root -p password
+Get-Content sql\01_schema.sql | docker exec -i mysql-container mysql -u root -p password
 
 # 3. インデックス適用
-Get-Content sql\indexes.sql | docker exec -i mysql-container mysql -u root -p password
+Get-Content sql\02_indexes.sql | docker exec -i mysql-container mysql -u root -p password
 
 # 4. サンプルデータ投入（任意）
-Get-Content sql\sample_data.sql | docker exec -i mysql-container mysql -u root -p password
+Get-Content sql\04_sample_data.sql | docker exec -i mysql-container mysql -u root -p password
 
 # 5. ビュー作成（任意）
-Get-Content sql\views.sql | docker exec -i mysql-container mysql -u root -p password
+Get-Content sql\03_views.sql | docker exec -i mysql-container mysql -u root -p password
 ```
 
 ### macOS / Linux
@@ -188,16 +200,16 @@ cd ai-defect-detection-db
 docker start mysql-container
 
 # 2. スキーマ適用
-docker exec -i mysql-container mysql -u root -p password < sql/schema.sql
+docker exec -i mysql-container mysql -u root -p password < sql/01_schema.sql
 
 # 3. インデックス適用
-docker exec -i mysql-container mysql -u root -p password < sql/indexes.sql
+docker exec -i mysql-container mysql -u root -p password < sql/02_indexes.sql
 
 # 4. サンプルデータ投入（任意）
-docker exec -i mysql-container mysql -u root -p password < sql/sample_data.sql
+docker exec -i mysql-container mysql -u root -p password < sql/04_sample_data.sql
 
 # 5. ビュー作成（任意）
-docker exec -i mysql-container mysql -u root -p password < sql/views.sql
+docker exec -i mysql-container mysql -u root -p password < sql/03_views.sql
 ```
 
 ---
